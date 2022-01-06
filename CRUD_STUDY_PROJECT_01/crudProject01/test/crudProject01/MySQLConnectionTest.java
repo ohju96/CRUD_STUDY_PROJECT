@@ -1,13 +1,37 @@
 package crudProject01;
 
+import static org.junit.Assert.fail;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import org.junit.Test;
+
+
+
+
 public class MySQLConnectionTest {
 	
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://crudProject01.ec2-52-78-151-218.ap-northeast-2.compute.amazonaws.com/crudProject01?useSSL=false&amp;serverTimezone=Asia/Seoul";
-	private static final String USER = "root";
-	private static final String PW = "1234";
+	static {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
-	
-
+	public void testConnection() {
+		
+		try(Connection con = 
+				DriverManager.getConnection(
+						"jdbc:mysql://13.125.11.44/crudProject01?serverTimezone=Asia/Seoul",
+						"root",
+						"1234")){
+			System.out.println(con);
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+		
+	}
 }
