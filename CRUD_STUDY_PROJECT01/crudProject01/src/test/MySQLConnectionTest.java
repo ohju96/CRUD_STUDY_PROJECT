@@ -25,7 +25,7 @@ public class MySQLConnectionTest {
 		
 		try(Connection con = 
 				DriverManager.getConnection(
-						"jdbc:mysql://13.124.91.170/crudProject01?serverTimezone=Asia/Seoul",
+						"jdbc:mysql://52.79.169.165/crudProject01?serverTimezone=Asia/Seoul",
 						"root",
 						"1234")){
 			System.out.println(con);
